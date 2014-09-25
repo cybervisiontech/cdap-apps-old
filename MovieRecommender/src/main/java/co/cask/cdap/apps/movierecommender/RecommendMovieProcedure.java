@@ -39,6 +39,8 @@ import java.util.Iterator;
 public class RecommendMovieProcedure extends AbstractProcedure {
 
   private static final Gson GSON = new Gson();
+  public static final String RATED_KEY = "rated";
+  public static final String RECOMMENDED_KEY = "recommended";
 
   @UseDataSet("recommendations")
   private ObjectStore<Rating> recommendations;
@@ -99,8 +101,8 @@ public class RecommendMovieProcedure extends AbstractProcedure {
     }
 
     JsonObject response = new JsonObject();
-    response.add("rated", watched);
-    response.add("recommended", recommended);
+    response.add(RATED_KEY, watched);
+    response.add(RECOMMENDED_KEY, recommended);
 
     return response;
   }
